@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>NavBar</title>
+<style type="text/css">
+*{margin:0;padding:0}
+ul{list-style: none;width: 300px}
+a{color: #333;text-decoration: none;}
+.navbar li a, .subNavbar li a{
+	display: block;
+	text-indent: 20px;
+	height: 30px;
+	line-height: 30px;
+	width: 100px;
+	background-color: #efefef;
+	margin-bottom:1px;
+}
+.navbar li a:hover, .subNavbar li a:hover{
+	background-color: #F60;color: #fff}
+}
+.navbar{margin-top: 100px}
+.navbar>li{position: relative;}
+
+.subNavbar{display: none;padding-left:5px;position: absolute;left:100px;}
+.subNavbar>li{background: #efefef;width: 100px}
+.navbar>li:hover .subNavbar{display: block;top: 0}
+</style>
+</head>
+
+<body>
+	<ul class="navbar">
+		<li><a href="#">Home</a></li>
+		<li><a href="#">News</a>
+			<ul class="subNavbar">
+				<li><a href="#">News1</a></li>
+				<li><a href="#">News2</a></li>
+			</ul>
+		</li>
+		<li><a href="#">Product</a>
+			<ul class="subNavbar">
+				<li><a href="#">Product1</a></li>
+				<li><a href="#">Product2</a></li>
+			</ul>
+		</li>
+		<li><a href="#">Sell</a>
+			<ul class="subNavbar">
+				<li><a href="#">Sell1</a></li>
+				<li><a href="#">Sell2</a></li>
+			</ul>
+		</li>
+		<li><a href="#">Contact</a></li>
+	</ul>
+</body>
