@@ -26,6 +26,16 @@ a{color: #333;text-decoration: none;}
 .subNavbar>li{background: #efefef;width: 100px}
 .navbar>li:hover .subNavbar{display: block;top: 0}
 </style>
+<script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$('a').hover(function(){
+			$(this).stop().animate({"width":"160px"},200)
+		},function(){
+			$(this).stop().animate({"width":"120px"},200)
+		})
+	})
+</script>
 </head>
 
 <body>
