@@ -1,0 +1,99 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>IFE JavaScript Task 01</title>
+    <style type="text/css">
+      block{
+        display: inline-block;
+        margin: 10px 10px;
+        padding: 10px 10px 0px;
+        height: 30px;
+        vertical-align: middle;
+        text-align: center;
+
+        background-color: red;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+<body>
+  <input type="text" id="number">
+  <button id="left-in">左侧入</button>
+  <button id="right-in">右侧入</button>
+  <button id="left-out">左侧出</button>
+  <button id="right-out">右侧出</button>
+
+  <div id="range"></div>
+
+<script type="text/javascript">
+
+function check(number){
+  reg = /^-?\d+$/;//验证是数字
+  if(number == ""){
+    alert("输入为空")
+    return false
+  }else if(!reg.test(number)){
+    return falsel
+  }else return true;
+}
+
+function left_in(range){
+  var number = document.getElementById("number").value;
+  if(check(number)){
+    var block = document.createElement("block");
+    block.innerHTML = number;
+
+    var arr = range.childNodes;
+    range.insertBefore(block, arr[0]);
+  }
+}
+
+function right_in(range){
+  var number = document.getElementById("number").value;
+  if(check(number)){
+    var block = document.createElement("block");
+    block.innerHTML = number;
+
+    range.appendChild(block);
+  }
+}
+
+function left_out(range){
+  var arr = range.childNodes;
+  range.removeChild(arr[0]);
+}
+
+function right_out(range){
+  var arr = range.childNodes;
+  range.removeChild(arr[arr.length-1]);
+}
+
+function init(){
+  var range = document.getElementById("range");
+  document.getElementById("left-in").onclick = function(){
+    left_in(range);
+  }
+  document.getElementById("left-out").onclick = function(){
+    left_out(range);
+  }
+  document.getElementById("right-in").onclick = function(){
+    right_in(range);
+  }
+  document.getElementById("right-out").onclick = function(){
+    right_out(range);
+  }
+  document.getElementById("range").onclick = function(e){
+    e = e || window.event; //window.event 监听事件状态
+    var t = e.target || e.srcElement;
+    if(t.tagName == 'BLOCK'){ //此处tagName 是大写 巨坑！该属性值返回值一直上大写
+      range.removeChild(t);
+    }
+  }
+}
+
+init();
+
+</script>
+</body>
+</html>
