@@ -150,7 +150,7 @@ function sleep(t){
     }
   }
 }
-
+//动画解决方案 for循环未能解决
 function show(arr){
   var timer = setInterval(function(){
     if(arr.length==0){
