@@ -109,10 +109,79 @@
 <div class="button">
   <button id="pre">先序</button>
   <button id="in">中序</button>
-  <button id="posi">后序</button>
+  <button id="post">后序</button>
 </div> 
 
-<script type="text/javascript">
+<script type="text/javascript"> 
+var range = new Array();
+
+function prenode(root){
+  if(root){
+    range.push(root);
+    prenode(root.firstElementChild);
+    prenode(root.lastElementChild);
+  }
+}
+
+function innode(root){
+  if(root){
+    innode(root.firstElementChild);
+    range.push(root);
+    innode(root.lastElementChild);
+  }
+}
+
+function postnode(root){
+  if(root){
+    postnode(root.firstElementChild);
+    postnode(root.lastElementChild);
+    range.push(root);
+  }
+}
+
+var root = document.getElementsByClassName("root")[0];
+
+function sleep(t){
+  var start = new Date().getTime();
+  while(true){
+    var end = new Date().getTime();
+    if(end-start > t){
+      break;
+    }
+  }
+}
+
+function show(arr){
+  for(let i = 0; i < arr.length; i++){
+    if(i){
+      arr[i-1].style.backgroundColor = "#fff";
+      arr[i].style.backgroundColor = "#000000";
+    }else{
+      arr[i].style.backgroundColor = "#000000";
+    }
+    sleep(200);
+  }
+}
+
+function init(){
+  document.getElementById("pre").onclick = function(){
+    prenode(root);
+    sleep(500);
+    show(range);
+  }
+  document.getElementById("in").onclick = function(){
+    innode(root);
+    sleep(500);
+    show(range);
+  }
+  document.getElementById("post").onclick = function(){
+    postnode(root);
+    sleep(500);
+    show(range);
+  }
+}
+
+init();
 
 
 </script>
