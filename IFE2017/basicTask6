@@ -152,15 +152,14 @@ function sleep(t){
 }
 
 function show(arr){
-  for(let i = 0; i < arr.length; i++){
-    if(i){
-      arr[i-1].style.backgroundColor = "#fff";
-      arr[i].style.backgroundColor = "#000000";
-    }else{
-      arr[i].style.backgroundColor = "#000000";
+  var timer = setInterval(function(){
+    if(arr.length==0){
+      clearInterval(timer);
+      return;
     }
-    sleep(200);
-  }
+    var now = arr.shift();
+    now.style.backgroundColor = "blue";
+  },300);
 }
 
 function init(){
