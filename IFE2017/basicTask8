@@ -1,0 +1,170 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>IFE JavaScript Task 01</title>
+    <style type="text/css">
+    /*样式部分参考网络*/
+    .box{
+      display: -webkit-flex; /* Safari */
+      display: flex; /*IE10以上*/
+      justify-content: center;
+    }
+    .root{
+      display: -webkit-flex; /* Safari */
+      display: flex; /*IE10以上*/
+      justify-content: center;
+      align-items: center;
+      border: 1px solid #000000;
+      width: 800px;
+      height: 400px;
+      background-color: #fff;
+    }
+    .node1{
+      display: -webkit-flex; /* Safari */
+      display: flex; /*IE10以上*/
+      border: 1px solid #000000;
+      justify-content: center;
+      align-items: center;
+      background-color: #fff;
+      width: 370px;
+      height: 300px;
+      margin: 10px;
+    }
+    .node2{
+      display: -webkit-flex; /* Safari */
+      display: flex; /*IE10以上*/
+      border: 1px solid #000000;
+      justify-content: center;
+      align-items: center;
+      background-color: #fff;
+      width: 150px;
+      height: 200px;
+      margin: 10px;
+    }
+    .node3{
+      display: -webkit-flex; /* Safari */
+      display: flex; /*IE10以上*/
+      border: 1px solid #000000;
+      justify-content: center;
+      align-items: center;
+      background-color: #fff;
+      width: 20px;
+      height: 160px;
+      margin: 10px;
+    }
+    .button{
+      position: absolute;
+      margin-top: 20px;
+      margin-left: -100px;
+      left: 50%
+    }
+    /*此处是标签选择器*/
+    newdiv{
+      display: -webkit-flex; /* Safari */
+      display: flex; /*IE10以上*/
+      border: 1px solid #000000;
+      justify-content: center;
+      align-items: center;
+      background-color: #000000;
+      width: 5px;
+      height: 40px;
+      margin: 5px;
+    }
+
+
+    </style>
+  </head>
+<body>
+
+<div class="box" id="wrap">
+  <div class="root">
+  a    
+    <div class="node1">
+    b 
+      <div class="node2">
+      c
+        <div class="node3">
+        d
+        </div>
+        <div class="node3">
+        d
+        </div>
+        <div class="node3">
+        d
+        </div>
+      </div>
+
+      <div class="node2">
+      c
+        <div class="node3">
+        d
+        </div>
+        <div class="node3">
+        d
+        </div>
+        <div class="node3">
+        d
+        </div>
+      </div>
+
+    </div>    
+    <div class="node1">
+    b  
+      <div class="node2">
+      c
+        <div class="node3">
+        d
+        </div>
+        <div class="node3">
+        d
+        </div>
+      </div>
+      
+      <div class="node2">
+      c
+        <div class="node3">
+        d
+        </div>
+        <div class="node3">
+        d
+        </div>
+      
+      </div>
+
+    </div>
+
+  </div>
+</div> 
+
+<div class="button">
+  <button id="delete">删除</button>
+
+  <input type="text" id="text" >
+  <button id="add">添加</button>
+</div>
+
+<script type="text/javascript"> 
+
+
+/*浏览器兼容 IE8以下使用attachEvent*/
+document.getElementById("wrap").addEventListener("click",function(e){
+  var t = e.target;
+  t.style.backgroundColor = "red";
+
+  document.getElementById("delete").onclick = function(){
+    //采用删除母节点的子节点来删除自己
+    t.parentNode.removeChild(t);
+  };
+  document.getElementById("add").onclick = function(){
+    var newdiv = document.createElement("newdiv");
+    newdiv.innerHTML = document.getElementById("text").value;
+    t.appendChild(newdiv);
+  };
+})
+//document.getElementById("wrap").attachEvent("onclick",function(e));
+
+
+</script>
+</body>
+</html>
