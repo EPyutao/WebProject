@@ -1,0 +1,211 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>IFE JavaScript Task 01</title>
+    <style type="text/css">
+    /*样式部分参考网络*/
+    .box{
+      display: -webkit-flex; /* Safari */
+      display: flex; /*IE10以上*/
+      justify-content: center;
+    }
+    .root{
+      display: -webkit-flex; /* Safari */
+      display: flex; /*IE10以上*/
+      justify-content: center;
+      align-items: center;
+      border: 1px solid #000000;
+      width: 800px;
+      height: 400px;
+      background-color: #fff;
+    }
+    .node1{
+      display: -webkit-flex; /* Safari */
+      display: flex; /*IE10以上*/
+      border: 1px solid #000000;
+      justify-content: center;
+      align-items: center;
+      background-color: #fff;
+      width: 370px;
+      height: 300px;
+      margin: 10px;
+    }
+    .node2{
+      display: -webkit-flex; /* Safari */
+      display: flex; /*IE10以上*/
+      border: 1px solid #000000;
+      justify-content: center;
+      align-items: center;
+      background-color: #fff;
+      width: 150px;
+      height: 200px;
+      margin: 10px;
+    }
+    .node3{
+      display: -webkit-flex; /* Safari */
+      display: flex; /*IE10以上*/
+      border: 1px solid #000000;
+      justify-content: center;
+      align-items: center;
+      background-color: #fff;
+      width: 20px;
+      height: 160px;
+      margin: 10px;
+    }
+    .button{
+      position: absolute;
+      margin-top: 20px;
+      margin-left: -100px;
+      left: 50%
+    }
+
+    </style>
+  </head>
+<body>
+
+<div class="box">
+  <div class="root">
+  a    
+    <div class="node1">
+    b 
+      <div class="node2">
+      c
+        <div class="node3">
+        d
+        </div>
+        <div class="node3">
+        d
+        </div>
+        <div class="node3">
+        d
+        </div>
+      </div>
+
+      <div class="node2">
+      c
+        <div class="node3">
+        d
+        </div>
+        <div class="node3">
+        d
+        </div>
+        <div class="node3">
+        d
+        </div>
+      </div>
+
+    </div>    
+    <div class="node1">
+    b  
+      <div class="node2">
+      c
+        <div class="node3">
+        d
+        </div>
+        <div class="node3">
+        d
+        </div>
+      </div>
+      
+      <div class="node2">
+      c
+        <div class="node3">
+        d
+        </div>
+        <div class="node3">
+        d
+        </div>
+      
+      </div>
+
+    </div>
+
+  </div>
+</div> 
+
+<div class="button">
+  <button id="tree">遍历</button>
+
+  <input type="text" id="text" >
+  <button id="search">查询</button>
+</div>
+
+<script type="text/javascript"> 
+var range = new Array();
+
+var root = document.getElementsByClassName("root")[0];
+
+function sleep(t){
+  var start = new Date().getTime();
+  while(true){
+    var end = new Date().getTime();
+    if(end-start > t){
+      break;
+    }
+  }
+}
+
+function show(arr){
+  var timer = setInterval(function(){
+    if(arr.length==0){
+      clearInterval(timer);
+      return;
+    }
+    var now = arr.shift();
+    now.style.backgroundColor = "blue";
+  },300);
+}
+
+function searchshow(arr, key){
+  var count = 0;
+  var timer = setInterval(function(){
+    if(arr.length==0){
+      clearInterval(timer);
+      return;
+    }
+    var now = arr.shift();
+    /*replace中的正则表达式是消去空格*/
+    if(now.firstChild.nodeValue.replace(/(^\s*)|(\s*$)/g,"") == key){
+      now.style.backgroundColor = "red";
+      count++;
+    }else{
+      now.style.backgroundColor = "blue";
+    }
+  },800);
+  if(!count){
+    alert("没有该数据");
+  }
+}
+
+/*此处注意，push操作应该遍历子节点之前！*/
+function traverse(root){
+  if(root){
+    range.push(root);
+    for(let i = 0; i < root.children.length; i++){
+      traverse(root.children[i]);
+    }
+  }
+
+}
+
+function init(){
+  document.getElementById("tree").onclick = function(){
+    traverse(root);
+    sleep(500);
+    show(range);
+  }
+  document.getElementById("search").onclick = function(){
+    var key = document.getElementById("text").value;
+    traverse(root);
+    sleep(500);
+    searchshow(range, key);
+  }
+}
+
+init();
+
+
+</script>
+</body>
+</html>
