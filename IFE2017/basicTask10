@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>IFE</title>
+	<style type="text/css">
+	*{
+		padding: 0;
+		margin: 0;
+	}
+	.element{
+		background-color: #ccc;
+		height: 200px;
+		width: 400px;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin-left: -200px;
+		margin-top: -100px;
+		overflow: hidden;
+	}
+	.c{
+		width: 100px;
+		height: 100px;
+		border-radius: 50%;
+		background-color: #fc0;
+	}
+	.c1{
+		position: absolute;
+		left: -50px;
+		top: -50px;
+
+	}
+	.c2{
+		position: absolute;
+		right: -50px;
+		bottom: -50px;
+	}	
+	</style>
+</head>
+<body>
+<div class="element">
+	<div class="c c1"></div>
+	<div class="c c2"></div>
+	
+</div>
+
+</body>
+</html>
