@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>IFE2017</title>
+	<style type="text/css">
+	*{
+		padding: 0px;
+		margin: 0px;
+	}
+	.container{
+		display: flex;
+		padding: 20px;
+		flex-direction: row;
+		flex-wrap: wrap;
+		align-content: space-between;
+	}
+	.q{
+		height: 120px;
+		width: 150px;
+		margin: 20px;
+		border: 1px solid #f00;
+	}
+	.w{
+		height: 100px;
+		width: 150px;
+		margin: 20px;
+		border: 1px solid #f00;
+	}
+	.e{
+		height: 40px;
+		width: 150px;
+		margin: 20px;
+		border: 1px solid #f00;
+	}
+	.r{
+		height: 200px;
+		width: 150px;
+		margin: 20px;
+		border: 1px solid #00f;
+	}
+	@media all and (min-width: 640px){
+		.container{
+			justify-content: space-between;
+			align-items: center;
+		}
+	}
+	@media all and (max-width: 640px){
+		.container{
+			justify-content: space-between;
+			align-items: flex-start;
+		}
+		.q{ order: 2; }
+		.w{ order: 3; }
+		.e{ order: 4; }
+		.r{ order: 1; }
+	}	
+	</style>
+</head>
+<body>
+<div class="container">
+	<div class="q"></div>
+	<div class="w"></div>
+	<div class="e"></div>
+	<div class="r"></div>
+</div>
+
+</body>
+</html>
